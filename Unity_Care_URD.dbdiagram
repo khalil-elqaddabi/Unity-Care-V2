@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "departments",
+      "schemaName": "public",
+      "x": -242.08031286391417,
+      "y": -218.59320831077545
+    },
+    {
+      "name": "patients",
+      "schemaName": "public",
+      "x": 130.17250000000007,
+      "y": -84.20000000000007
+    },
+    {
+      "name": "doctors",
+      "schemaName": "public",
+      "x": 128.63001953125007,
+      "y": -530.556561408258
+    },
+    {
+      "name": "Medication",
+      "schemaName": "public",
+      "x": -226.7226940843251,
+      "y": 59.79200450290364
+    },
+    {
+      "name": "Prescription",
+      "schemaName": "public",
+      "x": 531.9436736273744,
+      "y": 1.0336758600952862
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": []
+}

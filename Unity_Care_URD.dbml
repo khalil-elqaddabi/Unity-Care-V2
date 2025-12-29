@@ -1,0 +1,66 @@
+table departments {
+
+department_id int
+department_name varchar
+loacotion varchar
+created_at timestamp
+}
+
+
+table patients {
+
+id int 
+first_name varchar
+last_name varchar
+adress text 
+phone varchar
+email varchar
+date_of_birth date
+created_at timestamp
+updated_at timestamp
+user_id int
+}
+
+table doctors {
+
+id int 
+first_name varchar
+last_name varchar
+specialisation varchar
+phone varchar
+email varchar
+department_id int
+created_at timestamp
+updated_at timestamp
+user_id int
+
+}
+
+
+table  Medication {
+
+id int
+name varchar(255)
+instruction text
+created_at timestamp
+
+}
+
+table Prescription {
+
+id int 
+date date 
+doctor_id int 
+patient_id int 
+Medication_id int
+dosage_instructions text
+created_at timestamp
+}
+
+
+table Appointment {
+
+
+}
+
+
