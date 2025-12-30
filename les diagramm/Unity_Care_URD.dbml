@@ -76,6 +76,7 @@ ststus enum(scheduled, done, cancelled)
 created_at timestamp
 updated_at timestamp
 
+
 }
 ref: Appointment.doctor_id > doctors.id
 ref: Appointment.patient_id > patients.id
