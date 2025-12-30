@@ -1,10 +1,11 @@
 table departments {
 
-department_id int
+id int
 department_name varchar
 loacotion varchar
 created_at timestamp
 }
+
 
 
 table patients {
@@ -35,9 +36,10 @@ updated_at timestamp
 user_id int
 
 }
+ref: doctors.department_id > departments.id
 
 
-table  Medication {
+table  Medications {
 
 id int
 name varchar(255)
@@ -57,10 +59,25 @@ dosage_instructions text
 created_at timestamp
 }
 
+ref: Prescription.Medication_id >Medications.id
+ref: Prescription.doctor_id > doctors.id
+ref: Prescription.patient_id > patients.id
+
 
 table Appointment {
 
+id int
+date date
+time time
+doctor_id int 
+patient_id int
+reason text
+ststus enum(scheduled, done, cancelled)
+created_at timestamp
+updated_at timestamp
 
 }
+ref: Appointment.doctor_id > doctors.id
+ref: Appointment.patient_id > patients.id
 
 
