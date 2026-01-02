@@ -1,11 +1,13 @@
 <?php
 require_once "../config.php";
-abstract class  BaseModel{
+abstract class BaseModel
+{
     protected PDO $pdo;
 
-    public function __construct(?PDO $pdo = null){
-        $this->pdo= $pdo ?? Database::getConnection();
+    public function __construct(?PDO $pdo = null)
+    {
+        $this->pdo = $pdo ?? Database::getConnection();
 
     }
 
-} 
+}
