@@ -7,6 +7,7 @@ abstract class User
         protected string $firstName,
         protected string $lastName,
         protected string $email,
+        protected string $password
 
     ) {
     }
@@ -27,8 +28,11 @@ abstract class User
     {
         return $this->email;
     }
+    public function getPassword(): string{
+        return $this->password;
+    }
 
-    public function setFirst(string $v): void
+    public function setFirstName(string $v): void
     {
         $this->firstName = $v;
     }
@@ -41,7 +45,7 @@ abstract class User
         $this->email = $v;
     }
 
-    public function getFULLName(): string
+    public function getFullName(): string
     {
         return $this->firstName . ' ' . $this->lastName;
     }
