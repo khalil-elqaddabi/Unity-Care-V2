@@ -16,9 +16,9 @@ class patients extends User {
             parent::__construct($id, $firstName, $lastName, $email, $password );
         }
 
-    public function gitDob(): ?string {return $this->dateofbirth;}
-    public function gitAdress(): ?string {return $this->address;}
-    public function gitPhone(): ?string {return $this->phone;}
+    public function getDob(): ?string {return $this->dateofbirth;}
+    public function getAdress(): ?string {return $this->address;}
+    public function getPhone(): ?string {return $this->phone;}
 
     public function setDob(?string $v): void {$this->dateofbirth = $v;}
     public function setAddress(?string $v): void {$this->address = $v;}
