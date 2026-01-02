@@ -1,32 +1,40 @@
 <?php
 
-require_once __DIR__ ."/../config.php";
-require_once __DIR__ ."/../Classes/baswModel.php";
-require_once __DIR__ ."/../Classes/user.php";
-require_once __DIR__ ."/../Classes/patients.php";
-require_once __DIR__ ."/../Repositorys/patientR.php";
-
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../Classes/BaseModel.php';
+require_once __DIR__ . '/../Classes/User.php';
+require_once __DIR__ . '/../Classes/Patient.php';
+require_once __DIR__ . '/../Repositorys/PatientRepository.php';
 
 $repo = new PatientRepository();
 
-$action = $_GET["action"] ?? 'index';
+$action = $_GET['action'] ?? 'index';
 
-if($action ==='create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $passwordHash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     $patient = new patients(
         null,
-        $_POSR['first_name'],
-        $_POSR['last_name'],
-        $_POSR['email'],
+        $_POST['first_name'],
+        $_POST['last_name'],
+        $_POST['email'],
         $passwordHash,
-        $_POST['date_of_birth'] ?? null ,
+        $_POST['date_of_birth'] ?? null,
         $_POST['address'] ?? null,
         $_POST['phone'] ?? null
     );
+
     $repo->create($patient);
-    header('LOCATION: patients.php');
+    header('Location: patients.php');
     exit;
 }
+
+if ($action === 'delete' && isset($_GET['id'])) {
+    $repo->delete((int)$_GET['id']);
+    header('Location: patients.php');
+    exit;
+}
+
 $patients = $repo->findAll();
-include __DIR__ .'/../views/patients/index.php';
+
+include __DIR__ . '/../views/patients/index.php';
