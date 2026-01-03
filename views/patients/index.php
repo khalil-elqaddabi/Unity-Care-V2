@@ -22,7 +22,8 @@
             <td><?= htmlspecialchars($patient->getFullName()) ?></td>
             <td><?= htmlspecialchars($patient->getEmail()) ?></td>
             <td><?= htmlspecialchars($patient->getPhone() ?? '') ?></td>
-            <td><?= htmlspecialchars($patient->getDateOfBirth() ?? '') ?></td>
+            <td><?= htmlspecialchars($patient->getDob() ?? '') ?></td>
+            <td><?= htmlspecialchars($patient->getAdress() ?? '') ?></td>
             <td>
                 <a href="patients.php?action=delete&id=<?= $patient->getId() ?>"
                    onclick="return confirm('Supprimer ce patient ?');">

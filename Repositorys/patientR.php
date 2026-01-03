@@ -1,15 +1,15 @@
 <?php
 
-require_once __DIR__ . "../Classes/baswModel.php";
+require_once __DIR__ . "/../Classes/BaseModel.php";
 require_once __DIR__ . "/../Classes/patients.php";
 
 
 
 class PatientRepository extends BaseModel
 {
-    private function mapROwToPatient(array $row): patients
+    private function mapROwToPatient(array $row): Patient
     {
-        return new patients(
+        return new Patient(
 
             $row["id"],
             $row["first_name"],
@@ -34,7 +34,7 @@ class PatientRepository extends BaseModel
         return $patients;
     }
 
-    public function findById(int $id): ?patients
+    public function findById(int $id): ?Patient
     {
         $stmt = $this->pdo->prepare("SELECT * FROM patients 
         WHERE id = :id");
@@ -45,7 +45,7 @@ class PatientRepository extends BaseModel
         }
         return $this->mapROwToPatient($row);
     }
-    public function create(patients $patient): int
+    public function create(Patient $patient): int
     {
         $sql = "INSERT INTO patients (first_name,last_name,email,
         password,date_of_birth,address,phone)
@@ -62,7 +62,7 @@ class PatientRepository extends BaseModel
         ]);
         return (int) $this->pdo->lastInsertId();
     }
-    public function update(patients $patient): bool
+    public function update(Patient $patient): bool
     {
         $sql = "UPDATE patients SET 
     first_name = :first_name,

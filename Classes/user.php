@@ -7,7 +7,7 @@ abstract class User
         protected string $firstName,
         protected string $lastName,
         protected string $email,
-        protected string $password
+        protected ?string $password
 
     ) {
     }

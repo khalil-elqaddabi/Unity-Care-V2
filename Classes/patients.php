@@ -2,16 +2,16 @@
 
 require_once __DIR__ ."/user.php";
 
-class patients extends User {
+class Patient extends User {
     public function __construct(
         ?int $id,
         string $firstName,
         string $lastName, 
         string $email,
-        string $password,
+        ?string $password,
         private ?string $dateofbirth,
         private ?string $address,
-        private ?string $phone,
+        private ?string $phone
         ){
             parent::__construct($id, $firstName, $lastName, $email, $password );
         }

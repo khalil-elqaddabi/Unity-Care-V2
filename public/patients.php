@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../Classes/BaseModel.php';
 require_once __DIR__ . '/../Classes/User.php';
-require_once __DIR__ . '/../Classes/Patient.php';
-require_once __DIR__ . '/../Repositorys/PatientRepository.php';
+require_once __DIR__ . '/../Classes/patients.php';
+require_once __DIR__ . '/../Repositorys/patientR.php';
 
 $repo = new PatientRepository();
 
@@ -13,7 +13,7 @@ $action = $_GET['action'] ?? 'index';
 if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $passwordHash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $patient = new patients(
+    $patient = new Patient(
         null,
         $_POST['first_name'],
         $_POST['last_name'],
