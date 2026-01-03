@@ -1,3 +1,18 @@
+table user {
+
+id int pk
+role enum('admin','doctor','patient')
+first_name varchar(50)
+last_name varchar(50)
+email varchar(100)
+password varchar(50)
+created_at timestamp
+}
+ref: patients.user_id > user.id
+ref: doctors.user_id > user.id
+
+
+
 table departments {
 
 id int
@@ -11,11 +26,8 @@ created_at timestamp
 table patients {
 
 id int 
-first_name varchar
-last_name varchar
 adress text 
 phone varchar
-email varchar
 date_of_birth date
 created_at timestamp
 updated_at timestamp
@@ -25,11 +37,8 @@ user_id int
 table doctors {
 
 id int 
-first_name varchar
-last_name varchar
 specialisation varchar
 phone varchar
-email varchar
 department_id int
 created_at timestamp
 updated_at timestamp
