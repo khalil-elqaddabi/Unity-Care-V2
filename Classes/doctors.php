@@ -19,8 +19,9 @@ class Doctor extends User
     ) {
         parent::__construct($id, $firstName, $lastName, $email, $password);
     }
+    
 
-    public function getspecialisation(): string
+    public function getSpecialisation(): string
     {
         return $this->specialisation;
     }
