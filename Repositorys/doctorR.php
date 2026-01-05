@@ -90,7 +90,7 @@ class DoctorRepository extends BaseModel
         $stmt = $this->pdo->prepare($sql);
 
         return $stmt->execute([
-            // => mashi ->
+            
             "id"             => $doctor->getId(),
             "first_name"     => $doctor->getFirstName(),
             "last_name"      => $doctor->getLastName(),
