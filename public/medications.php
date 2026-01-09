@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['role']) && $_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'doctor') {
+    header("Location: ../public/login.php");
+    exit;
+}
 require_once __DIR__ . "/../config.php";
 require_once __DIR__ . "/../Classes/BaseModel.php";
 require_once __DIR__ . "/../Classes/Medications.php";

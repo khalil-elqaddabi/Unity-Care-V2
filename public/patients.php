@@ -1,5 +1,10 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../public/login.php");
+    exit;
+}
+// require_once __DIR__ ."/login.php";
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../Classes/BaseModel.php';
 require_once __DIR__ . '/../Classes/User.php';
@@ -30,7 +35,7 @@ if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($action === 'delete' && isset($_GET['id'])) {
-    $repo->delete((int)$_GET['id']);
+    $repo->delete((int) $_GET['id']);
     header('Location: patients.php');
     exit;
 }
