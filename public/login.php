@@ -11,13 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdo = Database::getConnection();
 
-    // Search f 3 tables: admin, doctors, patients
     $admin = null;
     $doctor = null;
     $patient = null;
     $role = null;
 
-    // 1. Check admin
     $stmt = $pdo->prepare("SELECT * FROM admin WHERE email = :email");
     $stmt->execute(['email' => $email]);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 2. Check doctor
     $stmt = $pdo->prepare("SELECT * FROM doctors WHERE email = :email");
     $stmt->execute(['email' => $email]);
     $doctor = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -45,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 3. Check patient
     $stmt = $pdo->prepare("SELECT * FROM patients WHERE email = :email");
     $stmt->execute(['email' => $email]);
     $patient = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -59,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 4. Email/password incorrect
     $error = "Email ou mot de passe incorrect.";
 }
 

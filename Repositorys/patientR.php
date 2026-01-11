@@ -13,7 +13,7 @@ class PatientRepository extends BaseModel
 
             $row["id"],
             $row["first_name"],
-            $row["last_name"],
+            $row["last_name"], 
             $row["email"],
             $row["password"],
             $row["date_of_birth"],

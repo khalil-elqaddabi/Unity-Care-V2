@@ -1,10 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['role']) && $_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'patient') {
     header("Location: ../public/login.php");
     exit;
 }
-// require_once __DIR__ ."/login.php";
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../Classes/BaseModel.php';
 require_once __DIR__ . '/../Classes/User.php';
@@ -16,8 +15,7 @@ $repo = new PatientRepository();
 $action = $_GET['action'] ?? 'index';
 
 if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $passwordHash = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
+    
     $patient = new Patient(
         null,
         $_POST['first_name'],
